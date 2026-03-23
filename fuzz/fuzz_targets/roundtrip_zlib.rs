@@ -24,8 +24,8 @@ fuzz_target!(|data: &[u8]| {
         let mut e = flate2::write::ZlibEncoder::new(Vec::new(), compression_level);
         e.write_all(data).unwrap();
         let compressed = e.finish().unwrap();
-        let options = zune_inflate::DeflateOptions::default().set_limit(orig_len);
-        let mut decoder = zune_inflate::DeflateDecoder::new_with_options(&compressed, options);
+        let options = ai_zune_inflate::DeflateOptions::default().set_limit(orig_len);
+        let mut decoder = ai_zune_inflate::DeflateDecoder::new_with_options(&compressed, options);
         let decoded = decoder
             .decode_zlib()
             .expect("Failed to decompress valid compressed data!");

@@ -1,4 +1,6 @@
-# zune-inflate
+This is a fork of the [zune-inflate](https://crates.io/crates/zune-inflate) crate.
+
+# ai-zune-inflate
 
 This crate features an optimized inflate algorithm supporting
 whole buffer decompression.
@@ -22,7 +24,7 @@ Cargo.toml
 ```toml
 [dependencies]
 #other amazing crates from other amazing people
-zune-inflate = "0.2.0"
+ai-zune-inflate = "0.2.0"
 ```
 
 ## Features
@@ -39,7 +41,7 @@ To enable one feature, modify `Cargo.toml` entry to be
 
 ```toml
 [dependencies]
-zune-inflate = { version = "0.2", default-features = false, features = ["#ADD_SPECIFIC_FEATURE"] }
+ai-zune-inflate = { version = "0.2", default-features = false, features = ["#ADD_SPECIFIC_FEATURE"] }
 ```
 
 ## Usage.
@@ -85,7 +87,7 @@ decompression settings.
 
 I'll compare this with `flate2` with `miniz-oxide` backend.
 
-| feature                 | `zune-inflate` | `flate2`          |
+| feature                 | `ai-zune-inflate` | `flate2`          |
 |-------------------------|----------------|-------------------|
 | zlib decompression      | yes            | yes               |
 | delfate decompression   | yes            | yes               |

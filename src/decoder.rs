@@ -202,7 +202,7 @@ impl<'a> DeflateDecoder<'a> {
     ///
     /// # Example
     /// ```no_run
-    /// use zune_inflate::{DeflateDecoder, DeflateOptions};
+    /// use ai_zune_inflate::{DeflateDecoder, DeflateOptions};
     /// let data  = [37];
     /// let options = DeflateOptions::default()
     ///     .set_confirm_checksum(true) // confirm the checksum for zlib and gzip
@@ -525,7 +525,7 @@ impl<'a> DeflateDecoder<'a> {
     /// ```no_run
     /// let data = [42]; // answer to life, the universe and everything
     ///
-    /// let mut decoder = zune_inflate::DeflateDecoder::new(&data);
+    /// let mut decoder = ai_zune_inflate::DeflateDecoder::new(&data);
     /// let bytes = decoder.decode_deflate().unwrap();
     /// ```
     ///

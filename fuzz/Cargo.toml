@@ -1,5 +1,5 @@
 [package]
-name = "zune-inflate-fuzz"
+name = "ai-zune-inflate-fuzz"
 version = "0.0.0"
 rust-version = "1.87.0"
 authors = ["Automatically generated"]
@@ -14,8 +14,9 @@ libfuzzer-sys = "0.4"
 miniz_oxide = "0.7.1"
 flate2 = { version = "1.0.17", features = ["zlib-ng"], default-features = false }
 
-[dependencies.zune-inflate]
+[dependencies.ai-zune-inflate]
 path = ".."
+features = ["std","zlib","gzip"]
 
 # Prevent this from interfering with workspaces
 [workspace]
