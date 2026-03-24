@@ -17,7 +17,7 @@ zlib = ["simd-adler32"]
 gzip = []
 std = ["simd-adler32/std"]
 
-default = []
+default = ["zlib", "gzip"]
 
 [dependencies]
 simd-adler32 = { version = "0.3.8", optional = true, default-features = false }
