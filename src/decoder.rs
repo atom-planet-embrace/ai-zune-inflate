@@ -111,7 +111,7 @@ impl DeflateOptions {
     ///
     /// # Arguments
     /// - yes: When true, the decoder will confirm checksum
-    /// when false, the decoder will skip checksum verification
+    ///   when false, the decoder will skip checksum verification
     /// # Notes
     /// This does not have an influence for deflate decoding as
     /// it does not have a checksum
@@ -166,7 +166,7 @@ impl<'a> DeflateDecoder<'a> {
     ///
     /// # Arguments
     /// - `data`: The compressed data. Data can be of any type
-    /// gzip,zlib or raw deflate.
+    ///   gzip,zlib or raw deflate.
     ///
     /// # Returns
     /// A decoder instance which will pull compressed data from `data` to inflate the output output
@@ -194,7 +194,7 @@ impl<'a> DeflateDecoder<'a> {
     ///
     /// # Arguments
     /// - `data`: The compressed data. Data can be of any format i.e
-    /// gzip, zlib or raw deflate.
+    ///   gzip, zlib or raw deflate.
     /// - `options` : A set of user defined options which tune how the decompressor
     ///
     ///  # Returns
@@ -535,13 +535,12 @@ impl<'a> DeflateDecoder<'a> {
     }
     /// Main inner loop for decompressing deflate data
     #[allow(unused_assignments)]
-    #[allow(clippy::never_loop)] // wrong submission
     fn start_deflate_block(&mut self) -> Result<Vec<u8>, InflateDecodeErrors> {
         let mut out_block = vec![0; self.options.size_hint];
         self.start_deflate_block_inner(&mut out_block)?;
-        return Ok(out_block);
+        Ok(out_block)
     }
-    #[allow(unused_assignments)]
+    #[allow(unused_assignments, clippy::never_loop)]
     fn start_deflate_block_inner(
         &mut self, out_block: &mut Vec<u8>
     ) -> Result<(), InflateDecodeErrors> {

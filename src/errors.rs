@@ -10,7 +10,6 @@
 //! streams
 
 use alloc::string::String;
-use alloc::vec;
 use alloc::vec::Vec;
 use core::fmt::{Debug, Display, Formatter};
 
@@ -20,7 +19,7 @@ use core::fmt::{Debug, Display, Formatter};
 ///
 /// - `error`:Tells you the error that actually occured.
 /// - `data`: Gives you decoded data up until that point when
-/// the error was encountered.
+///   the error was encountered.
 ///
 /// One can recover data up to the error if they so wish but
 /// guarantees about data state is not given
@@ -41,10 +40,10 @@ impl InflateDecodeErrors {
     ///
     /// # Returns
     /// Itself
-    pub fn new(error: DecodeErrorStatus, data: &Vec<u8>) -> InflateDecodeErrors {
+    pub fn new(error: DecodeErrorStatus, data: &[u8]) -> InflateDecodeErrors {
         InflateDecodeErrors {
             error,
-            data: data.clone()
+            data: data.to_owned()
         }
     }
     /// Create a new decode wrapper with an empty vector
@@ -52,7 +51,7 @@ impl InflateDecodeErrors {
     /// # Arguments
     /// - `error`: Error encountered during decoding.
     pub fn new_with_error(error: DecodeErrorStatus) -> InflateDecodeErrors {
-        InflateDecodeErrors::new(error, &vec![])
+        InflateDecodeErrors::new(error, &[])
     }
 }
 

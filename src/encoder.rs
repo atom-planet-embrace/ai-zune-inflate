@@ -151,7 +151,7 @@ impl<'a> DeflateEncoder<'a> {
     ///
     /// # Argument
     /// - `bytes`: number of bytes to compress from input as non-compressed
-    /// bytes
+    ///   bytes
     fn encode_no_compression(&mut self, bytes: usize) {
         let final_position = self.input_position + bytes;
 
