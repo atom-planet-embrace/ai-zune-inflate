@@ -43,7 +43,7 @@ impl InflateDecodeErrors {
     pub fn new(error: DecodeErrorStatus, data: &[u8]) -> InflateDecodeErrors {
         InflateDecodeErrors {
             error,
-            data: data.to_owned()
+            data: data.to_vec()
         }
     }
     /// Create a new decode wrapper with an empty vector
