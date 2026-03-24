@@ -1,7 +1,7 @@
 [package]
 name = "ai-zune-inflate"
 version = "0.2.54"
-rust-version = "1.87.0"
+rust-version = "1.58.1"
 edition = "2021"
 repository = "https://github.com/atom-planet-embrace/ai-zune-inflate"
 description = "A no_std port of zune-inflate"
