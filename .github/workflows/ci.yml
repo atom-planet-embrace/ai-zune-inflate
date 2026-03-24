@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / ${{ matrix.toolchain }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        toolchain: [stable, nightly]
+        include:
+          - os: ubuntu-latest
+            toolchain: "1.87" # MSRV
+          - os: macos-latest
+            toolchain: stable
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.toolchain }}
+      - name: Build (no_std, no default features)
+        run: cargo build --no-default-features --verbose
+      - name: Build (all features)
+        run: cargo build --all-features --verbose
+      - name: Test
+        run: cargo test ${{ matrix.toolchain == 'nightly' && '--all-features' || '' }} --verbose --no-fail-fast
+
+  features:
+    name: Feature / ${{ matrix.features }}
+    strategy:
+      matrix:
+        features: [zlib, gzip, std]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build with --features ${{ matrix.features }}
+        run: cargo build --no-default-features --features ${{ matrix.features }} --verbose
