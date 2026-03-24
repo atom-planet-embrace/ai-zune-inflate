@@ -19,6 +19,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@nightly
       - name: Install cargo-fuzz
         run: cargo install cargo-fuzz
+      - name: Create corpus directories
+        run: mkdir -p fuzz/corpus/{roundtrip,roundtrip_zlib,decode_buffer}
       - name: Fuzz roundtrip
         run: cargo +nightly fuzz run --fuzz-dir fuzz roundtrip fuzz/corpus/roundtrip -j2 -- -timeout=10s -max_total_time=120
       - name: Fuzz roundtrip_zlib

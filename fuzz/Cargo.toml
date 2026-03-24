@@ -39,3 +39,9 @@ name = "roundtrip_zlib"
 path = "fuzz_targets/roundtrip_zlib.rs"
 test = false
 doc = false
+
+[[bin]]
+name = "decode_zlib"
+path = "fuzz_targets/decode_zlib.rs"
+test = false
+doc = false
