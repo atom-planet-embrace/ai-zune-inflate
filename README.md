@@ -1,4 +1,4 @@
-This is a fork of the [zune-inflate](https://crates.io/crates/zune-inflate) crate.
+This is a fork of the [zune-inflate](https://crates.io/crates/zune-inflate) crate. The git repository is located at https://github.com/etemesi254/zune-image.
 
 # ai-zune-inflate
 
